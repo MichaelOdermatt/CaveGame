@@ -1,0 +1,263 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu1u47how3mx0"]
+
+[ext_resource type="Theme" uid="uid://cv03kaqa62u25" path="res://Assets/Themes/MenuTheme.tres" id="1_782ts"]
+[ext_resource type="Script" path="res://Assets/Scripts/Menus/SettingsMenu/SettingsMenu.gd" id="2_fibma"]
+
+[node name="SettingsMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_782ts")
+script = ExtResource("2_fibma")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Settings" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Settings/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="VideoSettings" type="MarginContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Video Settings"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+
+[node name="WindowMode" type="HBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/WindowMode"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Window Mode"
+
+[node name="WindowModeOptions" type="OptionButton" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/WindowMode"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 20
+
+[node name="Resolution" type="HBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Resolution"
+
+[node name="ResolutionOptions" type="OptionButton" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 20
+
+[node name="RenderScale" type="HBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/RenderScale"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Render Scale"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/RenderScale"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/RenderScale/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 25
+text = "50%"
+
+[node name="RenderScaleSlider" type="HSlider" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/RenderScale/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_782ts")
+min_value = 0.5
+max_value = 1.0
+step = 0.05
+value = 1.0
+scrollable = false
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/RenderScale/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 25
+text = "100%"
+
+[node name="AntiAliasing" type="HBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/AntiAliasing"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 35
+text = "Anti Aliasing"
+
+[node name="AntiAliasingOptions" type="OptionButton" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/AntiAliasing"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 20
+
+[node name="Fov" type="HBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/Fov"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "FOV: "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/Fov"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FovLabel" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/Fov/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 30
+text = "75"
+
+[node name="FovSlider" type="HSlider" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/VideoSettings/VBoxContainer/Fov/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_782ts")
+min_value = 60.0
+max_value = 110.0
+step = 5.0
+value = 75.0
+scrollable = false
+
+[node name="ControlSettings" type="MarginContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/ControlSettings"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/ControlSettings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Control Settings"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/ControlSettings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+
+[node name="LookSensitivity" type="HBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/ControlSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/ControlSettings/VBoxContainer/LookSensitivity"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Look Sensitivity"
+
+[node name="LookSensitivitySlider" type="HSlider" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/ControlSettings/VBoxContainer/LookSensitivity"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_782ts")
+min_value = 0.004
+max_value = 0.03
+step = 0.001
+value = 0.013
+scrollable = false
+
+[node name="AudioSettings" type="MarginContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/AudioSettings"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/AudioSettings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Audio Settings"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/AudioSettings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+
+[node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/AudioSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/AudioSettings/VBoxContainer/MasterVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Master Volume"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="VBoxContainer/Settings/MarginContainer/VBoxContainer/AudioSettings/VBoxContainer/MasterVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_782ts")
+max_value = 1.0
+step = 0.05
+value = 1.0
+scrollable = false
+
+[node name="CancelAndApply" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CancelAndApply"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 25
+
+[node name="Cancel" type="Button" parent="VBoxContainer/CancelAndApply/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Cancel"
+
+[node name="Apply" type="Button" parent="VBoxContainer/CancelAndApply/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_782ts")
+theme_override_font_sizes/font_size = 35
+text = "Apply"

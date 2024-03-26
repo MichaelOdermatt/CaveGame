@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn6exbnsy5wmc"]
+
+[ext_resource type="PackedScene" uid="uid://cu1u47how3mx0" path="res://Assets/Scenes/Menus/SettingsMenu.tscn" id="1_6ihg8"]
+[ext_resource type="PackedScene" uid="uid://ns45imr8o6r6" path="res://Assets/Scenes/Menus/PauseMenu/PauseMenuPanel.tscn" id="1_akmxf"]
+[ext_resource type="Script" path="res://Assets/Scripts/Menus/PauseMenu/PauseMenu.gd" id="1_kf8nb"]
+
+[node name="PauseMenu" type="MarginContainer"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("1_kf8nb")
+
+[node name="SettingsMenu" parent="." instance=ExtResource("1_6ihg8")]
+visible = false
+layout_mode = 2
+
+[node name="PauseMenuPanel" parent="." instance=ExtResource("1_akmxf")]
+visible = false
+layout_mode = 2

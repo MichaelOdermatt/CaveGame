@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://ns45imr8o6r6"]
+
+[ext_resource type="Theme" uid="uid://cv03kaqa62u25" path="res://Assets/Themes/MenuTheme.tres" id="1_6or6p"]
+[ext_resource type="Script" path="res://Assets/Scripts/Menus/PauseMenu/PauseMenuPanel.gd" id="1_8su2p"]
+
+[node name="PauseMenuPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8su2p")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme = ExtResource("1_6or6p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_6or6p")
+theme_override_font_sizes/font_size = 50
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="CenterContainer/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6or6p")
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+
+[node name="Settings" type="Button" parent="CenterContainer/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6or6p")
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+
+[node name="TitleScreen" type="Button" parent="CenterContainer/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6or6p")
+theme_override_font_sizes/font_size = 40
+text = "Title Screen"
+
+[node name="ExitGame" type="Button" parent="CenterContainer/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6or6p")
+theme_override_font_sizes/font_size = 40
+text = "Exit Game"

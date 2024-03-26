@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://c2p0xdheokba2"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/BlendTextures.gdshader" id="1_3v3v5"]
+[ext_resource type="Texture2D" uid="uid://6t5vl3a71hvw" path="res://Assets/Textures/Stone_19-512x512.png" id="2_5o430"]
+[ext_resource type="Texture2D" uid="uid://cina1qsedxj7k" path="res://Assets/Textures/Stone_10-512x512.png" id="3_bxa7a"]
+[ext_resource type="Texture2D" uid="uid://kjnrbejgo1xs" path="res://Assets/Textures/BaseSection2.png" id="4_0u213"]
+[ext_resource type="Texture2D" uid="uid://rt682obnsluh" path="res://Assets/Textures/Normals/Stone_19-512x512-normal.png" id="5_47jxc"]
+[ext_resource type="Texture2D" uid="uid://b6nc8o0xqmnfy" path="res://Assets/Textures/Normals/Stone_10-512x512-normal.png" id="6_0tm0m"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3v3v5")
+shader_parameter/UVFactor1 = 10.0
+shader_parameter/UVFactor2 = 10.0
+shader_parameter/Metal1 = 0.0
+shader_parameter/Metal2 = 0.0
+shader_parameter/Spec1 = 0.0
+shader_parameter/Spec2 = 0.0
+shader_parameter/AlbedoRough1 = ExtResource("2_5o430")
+shader_parameter/AlbedoRough2 = ExtResource("3_bxa7a")
+shader_parameter/Normal1 = ExtResource("5_47jxc")
+shader_parameter/Normal2 = ExtResource("6_0tm0m")
+shader_parameter/BlendMap = ExtResource("4_0u213")

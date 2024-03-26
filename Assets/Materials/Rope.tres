@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dk1xgbilyx5dx"]
+
+[ext_resource type="Texture2D" uid="uid://dphp26fenan1e" path="res://Assets/Textures/Weave_21-512x512.png" id="1_1q0db"]
+
+[resource]
+albedo_texture = ExtResource("1_1q0db")
+uv1_scale = Vector3(6.695, 6.695, 6.695)
