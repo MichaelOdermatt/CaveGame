@@ -16,3 +16,10 @@ shape = SubResource("CapsuleShape3D_marhc")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84177, 0)
+light_color = Color(0.886275, 0.85098, 0.780392, 1)
+light_energy = 0.1
+omni_range = 9.423
+omni_attenuation = 0.0915054
