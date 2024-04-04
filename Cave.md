@@ -375,3 +375,28 @@ We'd be forced to watch. Them, frantically trying to untie themselves.
 
 
 Third Skeleoton Wears a shirt that says Life is Good
+
+
+
+Eyes peering in:
+Strange Victory
+
+
+
+
+The Mouth / Old Teeth:
+Rates of colorectal cancer in younger adults have been on the rise since the early 2000's. Oncologists are scratching there heads as to why?
+
+I can tell you exactly why -
+
+...
+
+Oh sorry I didn't hear you come in.
+
+
+
+The truth is, from the other side of these walls this place looks a lot like a stomach. And you're in it.
+
+What does that make you?
+
+...

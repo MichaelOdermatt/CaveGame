@@ -1,9 +1,16 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://0vppnamshfj"]
 
-[ext_resource type="Texture2D" uid="uid://bqhps2p3xrhyq" path="res://Assets/Textures/Normals/Water 0325normal.jpg" id="1_ms5u5"]
+[ext_resource type="Texture2D" uid="uid://rt682obnsluh" path="res://Assets/Textures/Normals/Stone_19-512x512-normal.png" id="1_272wy"]
 
 [resource]
-transparency = 1
-albedo_color = Color(0.223529, 0.188235, 0.0823529, 0.760784)
+transparency = 4
+albedo_color = Color(0.160784, 0.133333, 0.0509804, 0.87451)
+metallic = 0.71
+metallic_specular = 0.2
 normal_enabled = true
-normal_texture = ExtResource("1_ms5u5")
+normal_scale = 0.1
+normal_texture = ExtResource("1_272wy")
+clearcoat_enabled = true
+clearcoat = 0.07
+clearcoat_roughness = 1.0
+uv1_scale = Vector3(0.535, 0.535, 0.535)
