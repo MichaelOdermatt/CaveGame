@@ -62,7 +62,7 @@ func handle_player_movement(delta: float) -> void:
 		acceleration = AIR_ACCELERATION;
 
 	# Apply an acceleration value to the players movement.
-	var direction = (_head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized();
+	var direction = (_head.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized();
 	_character.velocity.x = lerp(_character.velocity.x, direction.x * speed, delta * acceleration);
 	_character.velocity.z = lerp(_character.velocity.z, direction.z * speed, delta * acceleration);
 

@@ -27,6 +27,7 @@ uniform float Metal2 = 0.0;
 uniform float Spec1 = 0.0;
 uniform float Spec2 = 0.0;
 
+
 void fragment() {
 	vec2 UVx1 = UV * UVFactor1;
 	vec2 UVx2 = UV * UVFactor2;

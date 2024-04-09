@@ -378,25 +378,57 @@ Third Skeleoton Wears a shirt that says Life is Good
 
 
 
+
+
+Working Title: So when I die this will all be yours
+
+The cave is the system and belief itself
+
+Colorectal cancer is something which typically only affects older generations, it spreading to younger generations could represent a narrative of inheritance, passing something down. Something wholly bad.
+Having the cancerous colon being the place that the player exists, reflects climate change, inheriting a broken and dying place from your elders.
+
+
+
 Eyes peering in:
-Strange Victory
+~~What a strange victory.~~
+If There is no victory. If there was defeat. Would you keep going?
 
 
 
 
-The Mouth / Old Teeth:
-Rates of colorectal cancer in younger adults have been on the rise since the early 2000's. Oncologists are scratching there heads as to why?
-
-I can tell you exactly why -
+~~This place looks a lot different from out here. Maybe you can close your eyes and try to imagine it.~~
 
 ...
 
-Oh sorry I didn't hear you come in.
+~~And what good is a fortress thats walls are paper thin.~~
 
 
+Article on the Ground:
+Rates of colorectal cancer in younger adults have been on the rise since the early 2000's. Oncologists are scratching there heads as to why.
 
-The truth is, from the other side of these walls this place looks a lot like a stomach. And you're in it.
 
-What does that make you?
+Old bones:
+
+Not for you?
+
+This place never forgot you.
+
+Just keep trying.
+
+Beacuse really, it's a square deal any way you cut it...
+
+Everyone gets an even side.
 
 ...
+
+Go back up there. It's not too late.
+
+- or - 
+
+Dad:
+
+You guys have it so good, you know?
+
+Everything I did, I did it so you could get a better start than I did.
+
+So, when I die this will all be yours.
