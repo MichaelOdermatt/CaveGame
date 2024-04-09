@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4dwj1dngvu35"]
+[gd_scene load_steps=13 format=3 uid="uid://4dwj1dngvu35"]
 
 [ext_resource type="Texture2D" uid="uid://dwk1hg4bmii7k" path="res://Assets/Textures/Wood_11-512x512.png" id="1_f6mpu"]
 [ext_resource type="Texture2D" uid="uid://b5rbsmxiegtrd" path="res://Assets/Textures/Normals/Wood_11-512x512-normal.png" id="2_vebue"]
@@ -9,7 +9,7 @@ albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
 albedo_texture = ExtResource("1_f6mpu")
 normal_enabled = true
 normal_texture = ExtResource("2_vebue")
-uv1_scale = Vector3(4.09, 4.09, 4.09)
+uv1_scale = Vector3(1.56, 1.56, 1.56)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2d72l"]
 _surfaces = [{
@@ -66,7 +66,7 @@ scale_curve = SubResource("CurveTexture_4qqhd")
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.941176, 0.321569, 0.133333, 1)
+albedo_color = Color(0.988235, 0.627451, 0.294118, 1)
 albedo_texture = ExtResource("3_d7pve")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -76,6 +76,9 @@ particles_anim_loop = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_bes0r"]
 material = SubResource("StandardMaterial3D_7fuaa")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2p0y5"]
+radius = 0.68213
 
 [node name="Fire" type="Node3D"]
 
@@ -93,6 +96,13 @@ draw_pass_1 = SubResource("QuadMesh_bes0r")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.577685, 0)
-light_color = Color(1, 0.690196, 0.568627, 1)
+light_color = Color(1, 0.682353, 0.258824, 1)
 light_energy = 3.0
-omni_range = 12.0
+omni_range = 10.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.121279, 0.301189, 0)
+shape = SubResource("SphereShape3D_2p0y5")
