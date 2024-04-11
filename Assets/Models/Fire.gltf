@@ -8,14 +8,19 @@
 		{
 			"name":"Scene",
 			"nodes":[
-				0
+				0,
+				1
 			]
 		}
 	],
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"Cube"
+			"name":"Planks"
+		},
+		{
+			"mesh":1,
+			"name":"Embers"
 		}
 	],
 	"meshes":[
@@ -29,6 +34,19 @@
 						"TEXCOORD_0":2
 					},
 					"indices":3
+				}
+			]
+		},
+		{
+			"name":"Circle",
+			"primitives":[
+				{
+					"attributes":{
+						"POSITION":4,
+						"NORMAL":5,
+						"TEXCOORD_0":6
+					},
+					"indices":7
 				}
 			]
 		}
@@ -67,6 +85,40 @@
 			"componentType":5123,
 			"count":216,
 			"type":"SCALAR"
+		},
+		{
+			"bufferView":4,
+			"componentType":5126,
+			"count":98,
+			"max":[
+				0.9894735813140869,
+				0.21824245154857635,
+				0.9674986600875854
+			],
+			"min":[
+				-0.998943567276001,
+				-0.1244240328669548,
+				-1.0008755922317505
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":5,
+			"componentType":5126,
+			"count":98,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":6,
+			"componentType":5126,
+			"count":98,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":7,
+			"componentType":5123,
+			"count":486,
+			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
@@ -93,11 +145,35 @@
 			"byteLength":432,
 			"byteOffset":4608,
 			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":1176,
+			"byteOffset":5040,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1176,
+			"byteOffset":6216,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":784,
+			"byteOffset":7392,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":972,
+			"byteOffset":8176,
+			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":5040,
+			"byteLength":9148,
 			"uri":"Fire.bin"
 		}
 	]

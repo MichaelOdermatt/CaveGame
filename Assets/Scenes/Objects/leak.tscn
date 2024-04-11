@@ -3,10 +3,15 @@
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p6m31"]
 emission_shape = 3
 emission_box_extents = Vector3(3, 0.2, 2)
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1mad"]
 transparency = 1
-albedo_color = Color(0.870588, 0.698039, 0.627451, 0.454902)
+albedo_color = Color(0.913725, 0.792157, 0.741176, 0.454902)
 billboard_mode = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_ial7v"]
@@ -14,9 +19,8 @@ material = SubResource("StandardMaterial3D_m1mad")
 size = Vector2(0.02, 0.1)
 
 [node name="Leak" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.5858, 4.56766, 9.06656)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="Drop" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37513, -1.26102, -1.2528)
 amount = 2
 lifetime = 1.5

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bbonhu3hxgokh"]
+
+[ext_resource type="Texture2D" uid="uid://chkubpkj2wrfn" path="res://Assets/Textures/Elements_05-512x512.png" id="1_x602e"]
+[ext_resource type="Texture2D" uid="uid://b5x18arbr62tb" path="res://Assets/Textures/Normals/Elements_05-512x512-normal.png" id="2_f4e3x"]
+
+[resource]
+albedo_color = Color(0.470588, 0.470588, 0.470588, 1)
+albedo_texture = ExtResource("1_x602e")
+normal_enabled = true
+normal_texture = ExtResource("2_f4e3x")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
