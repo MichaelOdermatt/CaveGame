@@ -393,7 +393,8 @@ Eyes peering in:
 ~~What a strange victory.~~
 If There is no victory. If there was defeat. Would you keep going?
 
-
+- or we could go back to book narration -
+Two narrow eyes peer through the opening.
 
 
 ~~This place looks a lot different from out here. Maybe you can close your eyes and try to imagine it.~~
@@ -432,3 +433,16 @@ You guys have it so good, you know?
 Everything I did, I did it so you could get a better start than I did.
 
 So, when I die this will all be yours.
+
+...
+
+We're products of our environment.
+
+we've little control over who we turn into.
+
+- or we could go back to book narration (maybe interacting with the old man should tell a story) -
+
+Old man holding a peice of paper:
+Finding the deed was dificult. Rifling through montains of papers, mostly comprised of old magazines and daily bulletins he for some odd reason felt compelled to keep.
+Sorting through the papers, I abruptly stopped after reading the headline "More Young People Than Ever Will Get Colorectal Cancer This Year". It struck me because of how relevent it felt in that moment.
+Was it bad to be angry when I'd heard who he was leaving the lake house too?
