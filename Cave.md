@@ -446,3 +446,29 @@ Old man holding a peice of paper:
 Finding the deed was dificult. Rifling through montains of papers, mostly comprised of old magazines and daily bulletins he for some odd reason felt compelled to keep.
 Sorting through the papers, I abruptly stopped after reading the headline "More Young People Than Ever Will Get Colorectal Cancer This Year". It struck me because of how relevent it felt in that moment.
 Was it bad to be angry when I'd heard who he was leaving the lake house too?
+
+
+
+
+Very simple game. Go through spooky cave, people warn you not to keep going. you keep going and its nice at the end
+
+
+
+*Once you enter the big chamber you hear nice slow guitar music with a lot of reverb*
+
+Text scrolling over the screen:
+
+I wan't you to close your eyes and imagine yourself someplace else.
+Can you do that for me.
+
+Imagine somewhere sunny. With trees and birds.
+Water trickling over rocks.
+Wind moving through the branches.
+
+Let it actually take you somewhere else.
+
+Forget whats around you.
+
+Is it helping?
+
+Keep going.
