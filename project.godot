@@ -61,5 +61,6 @@ attack={
 
 [layer_names]
 
+3d_render/layer_2="PickaxeLayer"
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"

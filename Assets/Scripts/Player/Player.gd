@@ -4,9 +4,11 @@ var _basic_movement: BasicMovement;
 var _player_attack: PlayerAttack;
 
 @onready var _camera: Camera3D = $Head/Camera3D;
+@onready var _pickaxe_camera: Camera3D = $Head/Camera3D/SubViewportContainer/SubViewport/PickaxeCamera;
 @onready var _head: Node3D = $Head;
 @onready var _pause_menu = get_node('../PauseMenu');
-@onready var _animation_player = $Head/Camera3D/AnimationPlayer;
+@onready var _animation_tree = $AnimationTree;
+@onready var _pickaxe_raycast = $Head/Camera3D/PickaxeRaycast;
 
 func _ready():
 	_pause_menu.settings_updated.connect(self._update_player_variables_from_Globals);
@@ -18,9 +20,14 @@ func _ready():
 		_camera, 
 		self
 	);
-	_player_attack = PlayerAttack.new(_animation_player);
+	_player_attack = PlayerAttack.new(_animation_tree, _pickaxe_raycast);
 	## Capture the mouse initially.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+
+
+func _process(delta):
+	# Keep the pickaxe camera and main camera's global transform synced.
+	_pickaxe_camera.global_transform = _camera.global_transform;
 
 
 func _unhandled_input(event):

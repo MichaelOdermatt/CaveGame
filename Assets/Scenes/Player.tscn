@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://x0bvv5xlt1xx"]
+[gd_scene load_steps=17 format=3 uid="uid://x0bvv5xlt1xx"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player/Player.gd" id="1_k2u02"]
 [ext_resource type="Material" uid="uid://dhv5il3tkesgc" path="res://Assets/Materials/Wood.tres" id="2_obm7i"]
@@ -32,10 +32,23 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0.12188, -0.448569, -0.740202)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/PickaxeRaycast:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.157321)]
+}
 
 [sub_resource type="Animation" id="Animation_dwce7"]
 resource_name = "attack"
 length = 2.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -59,6 +72,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
 "update": 0,
 "values": [Vector3(0.12188, -0.448569, -0.740202), Vector3(0.296141, -0.487844, -0.660835), Vector3(-0.740396, -0.8061, -1.03466), Vector3(-0.373434, -0.610317, -1.03466), Vector3(0.12188, -0.448569, -0.740202)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/PickaxeRaycast:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.55, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.157321), Vector3(0, 0, -0.964576), Vector3(0, 0, 0.157321)]
 }
 
 [sub_resource type="Animation" id="Animation_bycfk"]
@@ -157,6 +182,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n0ngn")
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s4l41"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h5lyr"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4k357"]
+fadein_time = 0.1
+fadeout_time = 0.25
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o3oj2"]
+graph_offset = Vector2(-1218.25, -107.084)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_h5lyr")
+nodes/Animation/position = Vector2(-800, 160)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_s4l41")
+"nodes/Animation 2/position" = Vector2(-800, 40)
+nodes/PlayerAttack/node = SubResource("AnimationNodeOneShot_4k357")
+nodes/PlayerAttack/position = Vector2(-580, 100)
+nodes/output/position = Vector2(-360, 100)
+node_connections = [&"output", 0, &"PlayerAttack", &"PlayerAttack", 0, &"Animation 2", &"PlayerAttack", 1, &"Animation"]
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_k2u02")
@@ -169,6 +215,7 @@ shape = SubResource("CapsuleShape3D_marhc")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+cull_mask = 1048573
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D"]
 root_node = NodePath("../../..")
@@ -178,21 +225,53 @@ libraries = {
 }
 
 [node name="Pickaxe" type="Node3D" parent="Head/Camera3D"]
-transform = Transform3D(0.404192, 0.465051, -0.787627, -0.374628, 0.869732, 0.321279, 0.834436, 0.165209, 0.525759, 0.12188, -0.448569, -0.740202)
+transform = Transform3D(0.120448, 0.482932, -0.867334, -0.41324, 0.818791, 0.398515, 0.902621, 0.310416, 0.298188, 0.12188, -0.48728, -0.740202)
 
 [node name="Handle" type="MeshInstance3D" parent="Head/Camera3D/Pickaxe"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16896, 0)
+layers = 2
 mesh = SubResource("ArrayMesh_idmd7")
 skeleton = NodePath("")
 
 [node name="Head" type="MeshInstance3D" parent="Head/Camera3D/Pickaxe"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16896, 0)
+layers = 2
 mesh = SubResource("ArrayMesh_y5qm8")
 skeleton = NodePath("")
 
+[node name="PickaxeRaycast" type="RayCast3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0.157321)
+target_position = Vector3(0, 0, -0.5)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Camera3D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Head/Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="PickaxeCamera" type="Camera3D" parent="Head/Camera3D/SubViewportContainer/SubViewport"]
+cull_mask = 1047554
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84177, 0)
+layers = 3
 light_color = Color(0.886275, 0.85098, 0.780392, 1)
 light_energy = 0.1
 omni_range = 9.423
 omni_attenuation = 0.0915054
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_o3oj2")
+anim_player = NodePath("../Head/Camera3D/AnimationPlayer")
+active = true
+parameters/PlayerAttack/active = false
+parameters/PlayerAttack/internal_active = false
+parameters/PlayerAttack/request = 0

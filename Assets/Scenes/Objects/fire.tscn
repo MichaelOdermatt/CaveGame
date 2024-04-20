@@ -123,6 +123,7 @@ draw_pass_1 = SubResource("QuadMesh_bes0r")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609287, 0)
+layers = 3
 light_color = Color(1, 0.682353, 0.258824, 1)
 light_energy = 3.0
 light_size = 1.0
