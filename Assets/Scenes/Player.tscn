@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://x0bvv5xlt1xx"]
+[gd_scene load_steps=18 format=3 uid="uid://x0bvv5xlt1xx"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player/Player.gd" id="1_k2u02"]
 [ext_resource type="Material" uid="uid://dhv5il3tkesgc" path="res://Assets/Materials/Wood.tres" id="2_obm7i"]
@@ -35,14 +35,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Camera3D/PickaxeRaycast:position")
+tracks/2/path = NodePath("Head/Camera3D/PickaxeArea:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0.157321)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_dwce7"]
@@ -76,14 +76,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Camera3D/PickaxeRaycast:position")
+tracks/2/path = NodePath("Head/Camera3D/PickaxeArea:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.4, 0.55, 0.65),
+"times": PackedFloat32Array(0.4, 0.65, 0.85),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0.157321), Vector3(0, 0, -0.964576), Vector3(0, 0, 0.157321)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.17), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bycfk"]
@@ -182,6 +182,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n0ngn")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_lmp0q"]
+radius = 0.1
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s4l41"]
 animation = &"idle"
 
@@ -193,7 +196,7 @@ fadein_time = 0.1
 fadeout_time = 0.25
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o3oj2"]
-graph_offset = Vector2(-1218.25, -107.084)
+graph_offset = Vector2(-1218.25, -147.352)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_h5lyr")
 nodes/Animation/position = Vector2(-800, 160)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_s4l41")
@@ -225,7 +228,7 @@ libraries = {
 }
 
 [node name="Pickaxe" type="Node3D" parent="Head/Camera3D"]
-transform = Transform3D(0.120448, 0.482932, -0.867334, -0.41324, 0.818791, 0.398515, 0.902621, 0.310416, 0.298188, 0.12188, -0.48728, -0.740202)
+transform = Transform3D(0.404192, 0.465051, -0.787627, -0.374628, 0.869732, 0.321279, 0.834436, 0.165209, 0.525759, 0.12188, -0.448569, -0.740202)
 
 [node name="Handle" type="MeshInstance3D" parent="Head/Camera3D/Pickaxe"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16896, 0)
@@ -239,9 +242,14 @@ layers = 2
 mesh = SubResource("ArrayMesh_y5qm8")
 skeleton = NodePath("")
 
-[node name="PickaxeRaycast" type="RayCast3D" parent="Head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0.157321)
-target_position = Vector3(0, 0, -0.5)
+[node name="PickaxeArea" type="Area3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/PickaxeArea"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
+shape = SubResource("SphereShape3D_lmp0q")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Camera3D"]
 anchors_preset = 15
