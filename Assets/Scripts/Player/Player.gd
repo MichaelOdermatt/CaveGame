@@ -8,7 +8,6 @@ var _player_attack: PlayerAttack;
 @onready var _head: Node3D = $Head;
 @onready var _pause_menu = get_node('../PauseMenu');
 @onready var _animation_tree = $AnimationTree;
-@onready var _pickaxe_raycast = $Head/Camera3D/PickaxeRaycast;
 
 func _ready():
 	_pause_menu.settings_updated.connect(self._update_player_variables_from_Globals);
@@ -20,7 +19,7 @@ func _ready():
 		_camera, 
 		self
 	);
-	_player_attack = PlayerAttack.new(_animation_tree, _pickaxe_raycast);
+	_player_attack = PlayerAttack.new(_animation_tree);
 	## Capture the mouse initially.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 

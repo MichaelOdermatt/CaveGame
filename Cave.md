@@ -472,3 +472,20 @@ Forget whats around you.
 Is it helping?
 
 Keep going.
+
+
+
+
+You find an old man at the bottom of the cave:
+
+I'M SAVED!!!
+
+I've been down here for over 200 years.
+
+Pleese son, tell me! What is the world like out there?
+
+"Its GREAT!"
+
+"It's terrible."
+
+"I'm stuck in here too..."

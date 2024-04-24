@@ -1,11 +1,9 @@
 class_name PlayerAttack;
 
 var _animation_tree: AnimationTree;
-var _pickaxe_raycast: RayCast3D;
 
-func _init(animation_tree: AnimationTree, pickaxe_raycast):
+func _init(animation_tree: AnimationTree):
     _animation_tree = animation_tree;
-    _pickaxe_raycast = pickaxe_raycast;
 
 
 ## Runs the player attack animation.
