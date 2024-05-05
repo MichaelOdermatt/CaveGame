@@ -1,8 +1,15 @@
 extends Node3D;
 
+@onready var area3D = $Area3D;
+
 func _ready():
+    _setup_signals();
     _setup_up_down_tween();
     _setup_spin_tween();
+
+
+func _setup_signals():
+    area3D.body_entered.connect(self._collided_with_floating_pickaxe);
 
 
 func _setup_up_down_tween():
@@ -16,3 +23,9 @@ func _setup_up_down_tween():
 func _setup_spin_tween():
     var spin_tween = get_tree().create_tween().set_loops();
     spin_tween.tween_property(self, 'rotation_degrees', Vector3(0, 360, 0), 5).as_relative();
+
+
+## Hides the floating pickaxe and disables monitoring on the area3D.
+func _collided_with_floating_pickaxe(body: Node3D):
+    area3D.set_deferred('monitoring', false);
+    self.visible = false;

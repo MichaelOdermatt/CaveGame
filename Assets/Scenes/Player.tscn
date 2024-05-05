@@ -229,6 +229,7 @@ libraries = {
 
 [node name="Pickaxe" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(0.404192, 0.465051, -0.787627, -0.374628, 0.869732, 0.321279, 0.834436, 0.165209, 0.525759, 0.12188, -0.448569, -0.740202)
+visible = false
 
 [node name="Handle" type="MeshInstance3D" parent="Head/Camera3D/Pickaxe"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16896, 0)
@@ -246,6 +247,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 collision_layer = 2
 collision_mask = 0
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/PickaxeArea"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)

@@ -8,9 +8,12 @@ var _player_attack: PlayerAttack;
 @onready var _head: Node3D = $Head;
 @onready var _pause_menu = get_node('../PauseMenu');
 @onready var _animation_tree = $AnimationTree;
+@onready var _pickaxe_model = $Head/Camera3D/Pickaxe;
+@onready var _pickaxe_area3D = $Head/Camera3D/PickaxeArea;
+@onready var _floating_pickaxe_area3D = get_node('../FloatingPickaxe/Area3D');
 
 func _ready():
-	_pause_menu.settings_updated.connect(self._update_player_variables_from_Globals);
+	_setup_signals();
 	var setting_values = Globals.setting_values;
 	_basic_movement = BasicMovement.new(
 		setting_values.look_sensitivity, 
@@ -19,9 +22,14 @@ func _ready():
 		_camera, 
 		self
 	);
-	_player_attack = PlayerAttack.new(_animation_tree);
+	_player_attack = PlayerAttack.new(_animation_tree, _pickaxe_model, _pickaxe_area3D);
 	## Capture the mouse initially.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+
+
+func _setup_signals():
+	_pause_menu.settings_updated.connect(self._update_player_variables_from_Globals);
+	_floating_pickaxe_area3D.body_entered.connect(self._collided_with_floating_pickaxe);
 
 
 func _process(delta):
@@ -56,3 +64,8 @@ func _physics_process(delta):
 func _update_player_variables_from_Globals() -> void:
 	_basic_movement.set_look_sensitivity(Globals.setting_values.look_sensitivity);
 	_basic_movement.set_fov(Globals.setting_values.fov);
+
+
+## Ran when the player collides with the floating pickaxe.
+func _collided_with_floating_pickaxe(body: Node3D):
+	_player_attack.equip_pickaxe();
