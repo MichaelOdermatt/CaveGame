@@ -2,6 +2,7 @@ extends CharacterBody3D;
 
 var _basic_movement: BasicMovement;
 var _player_attack: PlayerAttack;
+var has_pickaxe: bool = false;
 
 @onready var _camera: Camera3D = $Head/Camera3D;
 @onready var _pickaxe_camera: Camera3D = $Head/Camera3D/SubViewportContainer/SubViewport/PickaxeCamera;
@@ -69,3 +70,4 @@ func _update_player_variables_from_Globals() -> void:
 ## Ran when the player collides with the floating pickaxe.
 func _collided_with_floating_pickaxe(body: Node3D):
 	_player_attack.equip_pickaxe();
+	has_pickaxe = true;
