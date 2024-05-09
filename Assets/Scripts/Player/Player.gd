@@ -1,5 +1,6 @@
 extends CharacterBody3D;
 
+var _camera_effects: CameraEffects;
 var _basic_movement: BasicMovement;
 var _player_attack: PlayerAttack;
 var has_pickaxe: bool = false;
@@ -24,8 +25,14 @@ func _ready():
 		self
 	);
 	_player_attack = PlayerAttack.new(_animation_tree, _pickaxe_model, _pickaxe_area3D);
+	_camera_effects = CameraEffects.new(_camera);
 	## Capture the mouse initially.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+
+
+## Shakes the player's camera.
+func shake_camera():
+	_camera_effects.shake(0.3);
 
 
 func _setup_signals():

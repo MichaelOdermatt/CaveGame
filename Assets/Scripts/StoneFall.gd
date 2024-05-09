@@ -15,6 +15,7 @@ func _drop_stone():
 	fallen_stone.visible = true;
 	suspended_stone.visible = false;
 	fallen_stone_collision_shape.set_deferred('disabled', false);
+	player.shake_camera();
 
 
 ## Invoked when the player enters the drop stone area.
