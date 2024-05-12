@@ -31,8 +31,8 @@ func _ready():
 
 
 ## Shakes the player's camera.
-func shake_camera():
-	_camera_effects.shake(0.3);
+func shake_camera(shake_time, shake_magnitude):
+	_camera_effects.shake(shake_time, shake_magnitude);
 
 
 func _setup_signals():
