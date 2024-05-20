@@ -489,3 +489,24 @@ Pleese son, tell me! What is the world like out there?
 "It's terrible."
 
 "I'm stuck in here too..."
+
+
+
+Man looking at ceiling:
+LET US OUT, YOU __
+
+I can't bear this fetid stench!
+
+
+Man near campfire:
+Alas the earth has swollowed us whole!
+
+May we all enjoy her aweful beauty from the inside!
+
+
+Man stuck in the wall:
+I WILL be regurgitated.
+
+OR
+
+I'm stuck in the fuckin' wall.

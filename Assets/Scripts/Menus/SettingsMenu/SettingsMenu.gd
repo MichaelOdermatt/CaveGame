@@ -57,7 +57,13 @@ func set_field_values(settings_data: SettingsData) -> void:
 		_get_resolution_as_string(settings_data.selected_resolution),
 	);
 	_resolution_options_btn.select(resolution_index);
-	_window_mode_options_btn.select(settings_data.selected_window_mode);
+
+	var selected_window_mode_index = OptionButtonExtensions.get_index_of_item_text(
+		_window_mode_options_btn,
+		Globals.WINDOW_MODES.find_key(settings_data.selected_window_mode)
+	);
+	_window_mode_options_btn.select(selected_window_mode_index);
+	
 	_anti_aliasing_options_btn.select(settings_data.selected_anti_aliasing);
 	_render_scale_slider.value = settings_data.render_scale;
 	_look_sensitivity_slider.value = settings_data.look_sensitivity;
