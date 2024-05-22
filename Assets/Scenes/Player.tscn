@@ -228,7 +228,7 @@ libraries = {
 }
 
 [node name="Pickaxe" type="Node3D" parent="Head/Camera3D"]
-transform = Transform3D(0.404192, 0.465051, -0.787627, -0.374628, 0.869732, 0.321279, 0.834436, 0.165209, 0.525759, 0.12188, -0.448569, -0.740202)
+transform = Transform3D(0.396475, 0.466234, -0.790843, -0.375835, 0.868378, 0.323525, 0.837589, 0.168957, 0.519517, 0.12188, -0.449678, -0.740202)
 visible = false
 
 [node name="Handle" type="MeshInstance3D" parent="Head/Camera3D/Pickaxe"]
@@ -285,3 +285,6 @@ active = true
 parameters/PlayerAttack/active = false
 parameters/PlayerAttack/internal_active = false
 parameters/PlayerAttack/request = 0
+
+[node name="WalkingAudioPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Reverb Bus"

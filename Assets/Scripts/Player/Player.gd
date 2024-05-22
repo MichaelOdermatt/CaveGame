@@ -3,6 +3,7 @@ extends CharacterBody3D;
 var _camera_effects: CameraEffects;
 var _basic_movement: BasicMovement;
 var _player_attack: PlayerAttack;
+var _player_sounds: PlayerSounds;
 var has_pickaxe: bool = false;
 
 @onready var _camera: Camera3D = $Head/Camera3D;
@@ -13,6 +14,7 @@ var has_pickaxe: bool = false;
 @onready var _pickaxe_model = $Head/Camera3D/Pickaxe;
 @onready var _pickaxe_area3D = $Head/Camera3D/PickaxeArea;
 @onready var _floating_pickaxe_area3D = get_node('../FloatingPickaxe/Area3D');
+@onready var _walk_audio_player = $WalkingAudioPlayer;
 
 func _ready():
 	_setup_signals();
@@ -25,6 +27,9 @@ func _ready():
 		self
 	);
 	_player_attack = PlayerAttack.new(_animation_tree, _pickaxe_model, _pickaxe_area3D);
+	_player_sounds = PlayerSounds.new(_walk_audio_player);
+	# debug
+	_player_sounds.play_walk_sounds();
 	_camera_effects = CameraEffects.new(_camera);
 	## Capture the mouse initially.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
