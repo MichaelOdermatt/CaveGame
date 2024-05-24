@@ -27,11 +27,9 @@ func _ready():
 		self
 	);
 	_player_attack = PlayerAttack.new(_animation_tree, _pickaxe_model, _pickaxe_area3D);
-	_player_sounds = PlayerSounds.new(_walk_audio_player);
-	# debug
-	_player_sounds.play_walk_sounds();
+	_player_sounds = PlayerSounds.new(_walk_audio_player, self);
 	_camera_effects = CameraEffects.new(_camera);
-	## Capture the mouse initially.
+	# Capture the mouse initially.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 
 
@@ -71,6 +69,7 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	## Update player movement.
 	_basic_movement.handle_player_movement(delta);
+	_player_sounds.handle_movement_sounds(delta);
 
 
 ## Updates any player variables from the global values.
