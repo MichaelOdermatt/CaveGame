@@ -493,9 +493,15 @@ Pleese son, tell me! What is the world like out there?
 
 
 Man looking at ceiling:
-LET US OUT, YOU __
+LET US OUT, YOU HEAVING MASS!
 
-I can't bear this fetid stench!
+NASTY WENCH!
+
+RETCH! RETCH! RETCH!, SAYS I!
+
+EXPOSE! GUSH AND SPOUT! BURST OF ALL YOUR DEPTHS!
+
+
 
 
 Man near campfire:

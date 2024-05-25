@@ -3,7 +3,6 @@ extends CharacterBody3D;
 var _camera_effects: CameraEffects;
 var _basic_movement: BasicMovement;
 var _player_attack: PlayerAttack;
-var _player_sounds: PlayerSounds;
 var has_pickaxe: bool = false;
 
 @onready var _camera: Camera3D = $Head/Camera3D;
@@ -14,10 +13,9 @@ var has_pickaxe: bool = false;
 @onready var _pickaxe_model = $Head/Camera3D/Pickaxe;
 @onready var _pickaxe_area3D = $Head/Camera3D/PickaxeArea;
 @onready var _floating_pickaxe_area3D = get_node('../FloatingPickaxe/Area3D');
-@onready var _walk_audio_player = $WalkingAudioPlayer;
+@onready var _player_sounds = $PlayerSounds;
 
 func _ready():
-	_setup_signals();
 	var setting_values = Globals.setting_values;
 	_basic_movement = BasicMovement.new(
 		setting_values.look_sensitivity, 
@@ -27,8 +25,10 @@ func _ready():
 		self
 	);
 	_player_attack = PlayerAttack.new(_animation_tree, _pickaxe_model, _pickaxe_area3D);
-	_player_sounds = PlayerSounds.new(_walk_audio_player, self);
 	_camera_effects = CameraEffects.new(_camera);
+	# We want to setup a signal on BasicMovement.step, so setup signals after 
+	# seting up player dependencies.
+	_setup_signals();
 	# Capture the mouse initially.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 
@@ -41,6 +41,7 @@ func shake_camera(shake_time, shake_magnitude):
 func _setup_signals():
 	_pause_menu.settings_updated.connect(self._update_player_variables_from_Globals);
 	_floating_pickaxe_area3D.body_entered.connect(self._collided_with_floating_pickaxe);
+	_basic_movement.step.connect(_player_sounds.play_footstep_sound);
 
 
 func _process(delta):
@@ -69,8 +70,6 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	## Update player movement.
 	_basic_movement.handle_player_movement(delta);
-	_player_sounds.handle_movement_sounds(delta);
-
 
 ## Updates any player variables from the global values.
 func _update_player_variables_from_Globals() -> void:

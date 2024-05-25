@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://x0bvv5xlt1xx"]
+[gd_scene load_steps=19 format=3 uid="uid://x0bvv5xlt1xx"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player/Player.gd" id="1_k2u02"]
 [ext_resource type="Material" uid="uid://dhv5il3tkesgc" path="res://Assets/Materials/Wood.tres" id="2_obm7i"]
 [ext_resource type="Material" uid="uid://cp8k1solb5o3w" path="res://Assets/Materials/Metal.tres" id="3_f0cnc"]
+[ext_resource type="Script" path="res://Assets/Scripts/Player/PlayerSounds.gd" id="4_m0hn4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_marhc"]
 
@@ -286,5 +287,8 @@ parameters/PlayerAttack/active = false
 parameters/PlayerAttack/internal_active = false
 parameters/PlayerAttack/request = 0
 
-[node name="WalkingAudioPlayer" type="AudioStreamPlayer" parent="."]
+[node name="PlayerSounds" type="Node3D" parent="."]
+script = ExtResource("4_m0hn4")
+
+[node name="WalkingAudioPlayer" type="AudioStreamPlayer" parent="PlayerSounds"]
 bus = &"Reverb Bus"

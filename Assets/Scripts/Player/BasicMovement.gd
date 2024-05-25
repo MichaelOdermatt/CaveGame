@@ -1,5 +1,7 @@
 class_name BasicMovement
 
+signal step();
+
 var WALK_SPEED = 5.0;
 var SPRINT_SPEED = 8.0;
 var JUMP_VELOCITY = 4.5;
@@ -8,12 +10,19 @@ var MAX_LOOK_ANGLE = 75;
 var GROUND_ACCELERATION = 9.0;
 var AIR_ACCELERATION = 2.0;
 
+# Step consts
+var STEP_FREQ = 2.4;
+var STEP_THRESHOLD = 0.1;
+
 var _look_sensitivity;
 var _gravity;
 var _head;
 var _camera;
 var _character;
 
+# Step variables
+var _step_pos: float;
+var _just_stepped: bool = false;
 
 func _init(
 	look_sensitivity: float, 
@@ -66,6 +75,10 @@ func handle_player_movement(delta: float) -> void:
 	_character.velocity.x = lerp(_character.velocity.x, direction.x * speed, delta * acceleration);
 	_character.velocity.z = lerp(_character.velocity.z, direction.z * speed, delta * acceleration);
 
+	# Update the step value as a function of player speed.
+	_step_pos += delta * _character.velocity.length() * float(_character.is_on_floor());
+	update_step(_step_pos);
+
 	_character.move_and_slide();
 
 
@@ -80,6 +93,17 @@ func handle_player_mouse_motion(event) -> void:
 				deg_to_rad(MIN_LOOK_ANGLE), 
 				deg_to_rad(MAX_LOOK_ANGLE)
 			);
+
+
+## Handles emitting the step signal.
+func update_step(time: float) -> void:
+	var pos = sin(time * STEP_FREQ);
+
+	if (pos < STEP_THRESHOLD && !_just_stepped):
+		_just_stepped = true;
+		emit_signal('step');
+	elif (pos > STEP_THRESHOLD && _just_stepped):
+		_just_stepped = false;
 
 
 ## Sets the player's look sensitivity.
