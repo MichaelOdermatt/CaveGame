@@ -3,9 +3,11 @@
 [ext_resource type="Script" path="res://Assets/Scripts/Player/Player.gd" id="1_k2u02"]
 [ext_resource type="Material" uid="uid://dhv5il3tkesgc" path="res://Assets/Materials/Wood.tres" id="2_obm7i"]
 [ext_resource type="Material" uid="uid://cp8k1solb5o3w" path="res://Assets/Materials/Metal.tres" id="3_f0cnc"]
-[ext_resource type="Script" path="res://Assets/Scripts/Player/PlayerSounds.gd" id="4_m0hn4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_marhc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o755r"]
+size = Vector3(0.658869, 0.613248, 0.655208)
 
 [sub_resource type="Animation" id="Animation_qel74"]
 length = 0.001
@@ -215,6 +217,14 @@ script = ExtResource("1_k2u02")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_marhc")
 
+[node name="WalkSurfaceDetection" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226098, 0)
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WalkSurfaceDetection"]
+shape = SubResource("BoxShape3D_o755r")
+
 [node name="Head" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
@@ -287,8 +297,7 @@ parameters/PlayerAttack/active = false
 parameters/PlayerAttack/internal_active = false
 parameters/PlayerAttack/request = 0
 
-[node name="PlayerSounds" type="Node3D" parent="."]
-script = ExtResource("4_m0hn4")
+[node name="PlayerAudioPlayers" type="Node3D" parent="."]
 
-[node name="WalkingAudioPlayer" type="AudioStreamPlayer" parent="PlayerSounds"]
+[node name="WalkingAudioPlayer" type="AudioStreamPlayer" parent="PlayerAudioPlayers"]
 bus = &"Reverb Bus"

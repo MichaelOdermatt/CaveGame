@@ -1,53 +1,56 @@
+class_name PlayerSounds;
 extends Node3D;
 
-var _footstep1 = preload("res://Assets/Audio/Footsteps/Footstep1.wav");
-var _footstep2 = preload("res://Assets/Audio/Footsteps/Footstep2.wav");
-var _footstep3 = preload("res://Assets/Audio/Footsteps/Footstep3.wav");
-var _footstep4 = preload("res://Assets/Audio/Footsteps/Footstep4.wav");
-var _footstep5 = preload("res://Assets/Audio/Footsteps/Footstep5.wav");
-var _footstep_sounds = [_footstep1, _footstep2, _footstep3, _footstep4, _footstep5];
+var _standard_footstep1 = preload("res://Assets/Audio/Footsteps/Standard/Footstep1.wav");
+var _standard_footstep2 = preload("res://Assets/Audio/Footsteps/Standard/Footstep2.wav");
+var _standard_footstep5 = preload("res://Assets/Audio/Footsteps/Standard/Footstep3.wav");
+var _standard_footstep_sounds = [_standard_footstep1, _standard_footstep2, _standard_footstep5];
 
-@onready var _walk_audio_player = $WalkingAudioPlayer;
+var _water_footstep1 = preload("res://Assets/Audio/Footsteps/Water/WaterFootstep1.wav");
+var _water_footstep2 = preload("res://Assets/Audio/Footsteps/Water/WaterFootstep2.wav");
+var _water_footstep5 = preload("res://Assets/Audio/Footsteps/Water/WaterFootstep3.wav");
+var _water_footstep_sounds = [_water_footstep1, _water_footstep2, _water_footstep5];
 
-# var _character: CharacterBody3D;
-# var _footstep_timer: Timer;
-# var _walk_sounds_playing: bool = false;
+var _sand_footstep1 = preload("res://Assets/Audio/Footsteps/Sand/SandFootstep1.wav");
+var _sand_footstep2 = preload("res://Assets/Audio/Footsteps/Sand/SandFootstep2.wav");
+var _sand_footstep5 = preload("res://Assets/Audio/Footsteps/Sand/SandFootstep3.wav");
+var _sand_footstep_sounds = [_sand_footstep1, _sand_footstep2, _sand_footstep5];
 
-# func _init(footstep_audio_player: AudioStreamPlayer, character: CharacterBody3D):
-# 	_footstep_audio_player = footstep_audio_player;
-# 	_character = character;
-# 	_footstep_timer = Timer.new();
-# 	character.add_child(_footstep_timer);
+var _walking_audio_player: AudioStreamPlayer;
+var _walk_surface_detection: Area3D;
 
-
-## Starts playing the walking sounds.
-# func start_walk_sounds():
-# 	if (_walk_sounds_playing):
-# 		return;
-# 
-# 	_walk_sounds_playing = true;
-# 	_footstep_timer.wait_time = 0.6;
-# 	_footstep_timer.timeout.connect(self._play_footstep_sound);
-# 	_footstep_timer.start();
-# 
-# 
-# ## Stops playing the walking sounds.
-# func stop_walk_sounds():
-# 	if (!_walk_sounds_playing):
-# 		return;
-# 	
-# 	_walk_sounds_playing = false;
-# 	_footstep_timer.timeout.disconnect(self._play_footstep_sound);
-# 	_footstep_timer.stop();
-# 
-# 
-# func handle_movement_sounds(delta: float):
-# 	if _character.is_on_floor() && _character.velocity.length() >= MOVEMENT_SOUND_THRESHOLD:
-# 		start_walk_sounds();
-# 	else:
-# 		stop_walk_sounds();
+func _init(walking_audio_player: AudioStreamPlayer, walk_surface_detection):
+	_walking_audio_player = walking_audio_player;
+	_walk_surface_detection = walk_surface_detection;
 
 
-## Plays a random footstep sound.
-func play_footstep_sound():
-	Helpers.playRandomSoundFromArray(_footstep_sounds, _walk_audio_player, true);
+func handle_step():
+	var colliders = _walk_surface_detection.get_overlapping_bodies();
+
+	# Get a list of all the groups that the colliders are in.
+	var collider_groups = [];
+	for collider in colliders:
+		collider_groups.append_array(collider.get_groups());
+		print_debug(collider);
+	
+	if (collider_groups.has('Water')):
+		_play_water_footstep_sound();
+	elif (collider_groups.has('Sand')):
+		_play_sand_footstep_sound();
+	else:
+		_play_standard_footstep_sound();
+
+
+## Plays a random standard footstep sound.
+func _play_standard_footstep_sound():
+	Helpers.playRandomSoundFromArray(_standard_footstep_sounds, _walking_audio_player, true);
+
+
+## Plays a random water footstep sound.
+func _play_water_footstep_sound():
+	Helpers.playRandomSoundFromArray(_water_footstep_sounds, _walking_audio_player, true);
+
+
+## Plays a random sand footstep sound.
+func _play_sand_footstep_sound():
+	Helpers.playRandomSoundFromArray(_sand_footstep_sounds, _walking_audio_player, true);

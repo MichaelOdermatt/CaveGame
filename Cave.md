@@ -499,15 +499,13 @@ NASTY WENCH!
 
 RETCH! RETCH! RETCH!, SAYS I!
 
-EXPOSE! GUSH AND SPOUT! BURST OF ALL YOUR DEPTHS!
-
-
+EXPOSE! GUSH AND SPOUT! BURST YOUR DEPTHS!
 
 
 Man near campfire:
 Alas the earth has swollowed us whole!
 
-May we all enjoy her aweful beauty from the inside!
+May we all enjoy her aweful beauty ~~from the inside~~!
 
 
 Man stuck in the wall:
@@ -516,3 +514,17 @@ I WILL be regurgitated.
 OR
 
 I'm stuck in the fuckin' wall.
+
+
+
+
+
+
+
+
+
+
+CREDITS:
+https://freesound.org/people/Nox_Sound/sounds/530384/
+https://freesound.org/people/Nox_Sound/sounds/490951/
+https://freesound.org/people/savataivanov/sounds/384082/
