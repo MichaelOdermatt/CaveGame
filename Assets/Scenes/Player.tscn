@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://x0bvv5xlt1xx"]
+[gd_scene load_steps=20 format=3 uid="uid://x0bvv5xlt1xx"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player/Player.gd" id="1_k2u02"]
 [ext_resource type="Material" uid="uid://dhv5il3tkesgc" path="res://Assets/Materials/Wood.tres" id="2_obm7i"]
 [ext_resource type="Material" uid="uid://cp8k1solb5o3w" path="res://Assets/Materials/Metal.tres" id="3_f0cnc"]
+[ext_resource type="AudioStream" uid="uid://v6kw63qgq75k" path="res://Assets/Audio/PickaxeSwing.wav" id="4_ehvts"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_marhc"]
 
@@ -87,6 +88,20 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -1.17), Vector3(0, 0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_pickaxe_swing_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_bycfk"]
@@ -199,7 +214,6 @@ fadein_time = 0.1
 fadeout_time = 0.25
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o3oj2"]
-graph_offset = Vector2(-1218.25, -147.352)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_h5lyr")
 nodes/Animation/position = Vector2(-800, 160)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_s4l41")
@@ -300,4 +314,9 @@ parameters/PlayerAttack/request = 0
 [node name="PlayerAudioPlayers" type="Node3D" parent="."]
 
 [node name="WalkingAudioPlayer" type="AudioStreamPlayer" parent="PlayerAudioPlayers"]
+bus = &"Reverb Bus"
+
+[node name="PickaxeAudioPlayer" type="AudioStreamPlayer" parent="PlayerAudioPlayers"]
+stream = ExtResource("4_ehvts")
+volume_db = -15.0
 bus = &"Reverb Bus"

@@ -16,10 +16,12 @@ var _sand_footstep2 = preload("res://Assets/Audio/Footsteps/Sand/SandFootstep2.w
 var _sand_footstep5 = preload("res://Assets/Audio/Footsteps/Sand/SandFootstep3.wav");
 var _sand_footstep_sounds = [_sand_footstep1, _sand_footstep2, _sand_footstep5];
 
+var _pickaxe_audio_player: AudioStreamPlayer;
 var _walking_audio_player: AudioStreamPlayer;
 var _walk_surface_detection: Area3D;
 
-func _init(walking_audio_player: AudioStreamPlayer, walk_surface_detection):
+func _init(pickaxe_audio_player, walking_audio_player: AudioStreamPlayer, walk_surface_detection: Area3D):
+	_pickaxe_audio_player = pickaxe_audio_player;
 	_walking_audio_player = walking_audio_player;
 	_walk_surface_detection = walk_surface_detection;
 
@@ -31,7 +33,6 @@ func handle_step():
 	var collider_groups = [];
 	for collider in colliders:
 		collider_groups.append_array(collider.get_groups());
-		print_debug(collider);
 	
 	if (collider_groups.has('Water')):
 		_play_water_footstep_sound();
@@ -54,3 +55,8 @@ func _play_water_footstep_sound():
 ## Plays a random sand footstep sound.
 func _play_sand_footstep_sound():
 	Helpers.playRandomSoundFromArray(_sand_footstep_sounds, _walking_audio_player, true);
+
+
+## Plays the pickaxe swing sound.
+func play_pickaxe_swing_sound():
+	_pickaxe_audio_player.play();

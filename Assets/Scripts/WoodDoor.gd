@@ -6,6 +6,7 @@ extends Node3D;
 @onready var door_brackets = get_node('../DoorBrackets');
 @onready var wood_particles = $WoodParticles;
 @onready var smoke_particles = $SmokeParticles;
+@onready var _door_break_audio_player = $DoorBreakAudioPlayer;
 @onready var player = get_node('../../Player');
 
 var is_door_broken = false;
@@ -30,4 +31,5 @@ func break_door():
 	smoke_particles.emitting = true;
 	player.shake_camera(0.3, 0.15);
 	static_body_collider.set_deferred('disabled', true);
+	_door_break_audio_player.play();
 	is_door_broken = true;

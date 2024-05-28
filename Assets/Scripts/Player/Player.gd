@@ -15,6 +15,7 @@ var has_pickaxe: bool = false;
 @onready var _pickaxe_area3D = $Head/Camera3D/PickaxeArea;
 @onready var _floating_pickaxe_area3D = get_node('../FloatingPickaxe/Area3D');
 @onready var _walking_audio_player = $PlayerAudioPlayers/WalkingAudioPlayer;
+@onready var _pickaxe_audio_player = $PlayerAudioPlayers/PickaxeAudioPlayer;
 @onready var _walk_surface_detection = $WalkSurfaceDetection;
 
 func _ready():
@@ -28,7 +29,7 @@ func _ready():
 	);
 	_player_attack = PlayerAttack.new(_animation_tree, _pickaxe_model, _pickaxe_area3D);
 	_camera_effects = CameraEffects.new(_camera);
-	_player_sounds = PlayerSounds.new(_walking_audio_player, _walk_surface_detection);
+	_player_sounds = PlayerSounds.new(_pickaxe_audio_player, _walking_audio_player, _walk_surface_detection);
 	# We want to setup a signal on BasicMovement.step, so setup signals after 
 	# seting up player dependencies.
 	_setup_signals();
@@ -39,6 +40,11 @@ func _ready():
 ## Shakes the player's camera.
 func shake_camera(shake_time, shake_magnitude):
 	_camera_effects.shake(shake_time, shake_magnitude);
+
+
+## Plays the pickaxe swing sound. Called by animation player.
+func play_pickaxe_swing_sound():
+	_player_sounds.play_pickaxe_swing_sound();
 
 
 func _setup_signals():
@@ -73,6 +79,7 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	## Update player movement.
 	_basic_movement.handle_player_movement(delta);
+
 
 ## Updates any player variables from the global values.
 func _update_player_variables_from_Globals() -> void:
