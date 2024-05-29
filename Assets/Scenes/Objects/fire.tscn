@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://4dwj1dngvu35"]
+[gd_scene load_steps=25 format=3 uid="uid://4dwj1dngvu35"]
 
 [ext_resource type="Texture2D" uid="uid://dwk1hg4bmii7k" path="res://Assets/Textures/Wood_11-512x512.png" id="1_f6mpu"]
 [ext_resource type="Texture2D" uid="uid://c55wy3x6v0rut" path="res://Assets/Textures/Smoke30Frames.png" id="2_a5klo"]
 [ext_resource type="Texture2D" uid="uid://b5rbsmxiegtrd" path="res://Assets/Textures/Normals/Wood_11-512x512-normal.png" id="2_vebue"]
 [ext_resource type="Texture2D" uid="uid://cclevm6ukkxlt" path="res://Assets/Textures/FireSpritesheet.png" id="3_d7pve"]
 [ext_resource type="Material" uid="uid://bbonhu3hxgokh" path="res://Assets/Materials/Embers.tres" id="4_47fox"]
+[ext_resource type="AudioStream" uid="uid://dk8qohr067cko" path="res://Assets/Audio/FireCrackle.wav" id="6_i15oy"]
 
 [sub_resource type="Curve" id="Curve_e3kt5"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -201,3 +202,8 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0436971, 0)
 mesh = SubResource("ArrayMesh_b80o7")
 skeleton = NodePath("")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_i15oy")
+autoplay = true
+bus = &"Reverb Bus"
