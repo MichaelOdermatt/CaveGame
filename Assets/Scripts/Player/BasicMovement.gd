@@ -1,6 +1,8 @@
 class_name BasicMovement
 
 signal step();
+# TODO maybe pass a magnitude or strength with this signal
+signal land();
 
 var WALK_SPEED = 5.0;
 var SPRINT_SPEED = 8.0;
@@ -19,6 +21,8 @@ var _gravity;
 var _head;
 var _camera;
 var _character;
+## Variable used to emit the 'land' signal when the player first hits the ground after being airborn.
+var _on_ground: bool = false;
 
 # Step variables
 var _step_pos: float;
@@ -47,9 +51,15 @@ func handle_player_movement(delta: float) -> void:
 	else:
 		speed = WALK_SPEED;
 
+	# Emit the land signal on the first frame the player hits the ground.
+	if _character.is_on_floor() && !_on_ground:
+		_on_ground = true;
+		emit_signal('land');
+
 	# Add the gravity.
 	if not _character.is_on_floor():
 		_character.velocity.y -= _gravity * delta;
+		_on_ground = false;
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and _character.is_on_floor():

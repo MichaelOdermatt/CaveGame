@@ -16,6 +16,7 @@ var has_pickaxe: bool = false;
 @onready var _floating_pickaxe_area3D = get_node('../FloatingPickaxe/Area3D');
 @onready var _walking_audio_player = $PlayerAudioPlayers/WalkingAudioPlayer;
 @onready var _pickaxe_audio_player = $PlayerAudioPlayers/PickaxeAudioPlayer;
+@onready var _jump_and_land_audio_player = $PlayerAudioPlayers/JumpAndLandAudioPlayer;
 @onready var _walk_surface_detection = $WalkSurfaceDetection;
 
 func _ready():
@@ -29,7 +30,7 @@ func _ready():
 	);
 	_player_attack = PlayerAttack.new(_animation_tree, _pickaxe_model, _pickaxe_area3D);
 	_camera_effects = CameraEffects.new(_camera);
-	_player_sounds = PlayerSounds.new(_pickaxe_audio_player, _walking_audio_player, _walk_surface_detection);
+	_player_sounds = PlayerSounds.new(_pickaxe_audio_player, _walking_audio_player, _jump_and_land_audio_player, _walk_surface_detection);
 	# We want to setup a signal on BasicMovement.step, so setup signals after 
 	# seting up player dependencies.
 	_setup_signals();
@@ -44,13 +45,15 @@ func shake_camera(shake_time, shake_magnitude):
 
 ## Plays the pickaxe swing sound. Called by animation player.
 func play_pickaxe_swing_sound():
-	_player_sounds.play_pickaxe_swing_sound();
+	if (has_pickaxe):
+		_player_sounds.play_pickaxe_swing_sound();
 
 
 func _setup_signals():
 	_pause_menu.settings_updated.connect(self._update_player_variables_from_Globals);
 	_floating_pickaxe_area3D.body_entered.connect(self._collided_with_floating_pickaxe);
 	_basic_movement.step.connect(_player_sounds.handle_step);
+	_basic_movement.land.connect(_player_sounds.play_land_sound);
 
 
 func _process(delta):

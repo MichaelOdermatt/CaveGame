@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://x0bvv5xlt1xx"]
+[gd_scene load_steps=21 format=3 uid="uid://x0bvv5xlt1xx"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player/Player.gd" id="1_k2u02"]
 [ext_resource type="Material" uid="uid://dhv5il3tkesgc" path="res://Assets/Materials/Wood.tres" id="2_obm7i"]
 [ext_resource type="Material" uid="uid://cp8k1solb5o3w" path="res://Assets/Materials/Metal.tres" id="3_f0cnc"]
 [ext_resource type="AudioStream" uid="uid://v6kw63qgq75k" path="res://Assets/Audio/PickaxeSwing.wav" id="4_ehvts"]
+[ext_resource type="AudioStream" uid="uid://cbac8c6fnkjml" path="res://Assets/Audio/Land/Land.wav" id="5_dhe36"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_marhc"]
 
@@ -319,4 +320,8 @@ bus = &"Reverb Bus"
 [node name="PickaxeAudioPlayer" type="AudioStreamPlayer" parent="PlayerAudioPlayers"]
 stream = ExtResource("4_ehvts")
 volume_db = -15.0
+bus = &"Reverb Bus"
+
+[node name="JumpAndLandAudioPlayer" type="AudioStreamPlayer" parent="PlayerAudioPlayers"]
+stream = ExtResource("5_dhe36")
 bus = &"Reverb Bus"
