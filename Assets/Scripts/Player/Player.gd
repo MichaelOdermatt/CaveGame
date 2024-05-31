@@ -90,7 +90,7 @@ func _update_player_variables_from_Globals() -> void:
 	_basic_movement.set_fov(Globals.setting_values.fov);
 
 
-## Ran when the player collides with the floating pickaxe.
+## Runs when the player collides with the floating pickaxe.
 func _collided_with_floating_pickaxe(body: Node3D):
 	_player_attack.equip_pickaxe();
 	has_pickaxe = true;

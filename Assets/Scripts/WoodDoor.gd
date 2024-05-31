@@ -24,6 +24,7 @@ func _on_area_entered(area: Area3D):
 		break_door();
 
 
+## Breaks the wooden door
 func break_door():
 	mesh.visible = false;
 	door_brackets.visible = false;

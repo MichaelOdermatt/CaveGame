@@ -48,7 +48,9 @@ func play_pickaxe_swing_sound():
 
 
 ## Plays sound for when the player lands after being airborn.
-func play_land_sound():
+func play_land_sound(force: float):
+	_jump_and_land_audio_player.volume_db = linear_to_db(force)
+
 	var walk_surface_type = _get_walk_surface_type();
 	
 	if (walk_surface_type == 'Water'):
@@ -76,6 +78,7 @@ func _play_sand_footstep_sound():
 
 ## Plays the standard land sound.
 func _play_standard_land_sound():
+	_jump_and_land_audio_player.pitch_scale = randf_range(0.8, 1.2);
 	_jump_and_land_audio_player.stream = _standard_land;
 	_jump_and_land_audio_player.play();
 

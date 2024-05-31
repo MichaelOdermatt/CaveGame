@@ -1,8 +1,9 @@
 class_name BasicMovement
 
 signal step();
-# TODO maybe pass a magnitude or strength with this signal
-signal land();
+## Signal for when the player lands after being airborn. The force
+## parameter represents the force with which the player hit the ground.
+signal land(force);
 
 var WALK_SPEED = 5.0;
 var SPRINT_SPEED = 8.0;
@@ -21,6 +22,8 @@ var _gravity;
 var _head;
 var _camera;
 var _character;
+
+var _previous_frame_velocity_y: float;
 ## Variable used to emit the 'land' signal when the player first hits the ground after being airborn.
 var _on_ground: bool = false;
 
@@ -54,7 +57,9 @@ func handle_player_movement(delta: float) -> void:
 	# Emit the land signal on the first frame the player hits the ground.
 	if _character.is_on_floor() && !_on_ground:
 		_on_ground = true;
-		emit_signal('land');
+		# Reset the step pos to zero. This prevents a step even firing immediately after you land. 
+		_step_pos = 0;
+		emit_signal('land', _calc_land_force());
 
 	# Add the gravity.
 	if not _character.is_on_floor():
@@ -87,7 +92,10 @@ func handle_player_movement(delta: float) -> void:
 
 	# Update the step value as a function of player speed.
 	_step_pos += delta * _character.velocity.length() * float(_character.is_on_floor());
-	update_step(_step_pos);
+	_update_step(_step_pos);
+
+	# Update the previous frame's y velocity. This is used to calculate the force for the land signal.
+	_previous_frame_velocity_y = _character.velocity.y;
 
 	_character.move_and_slide();
 
@@ -105,8 +113,18 @@ func handle_player_mouse_motion(event) -> void:
 			);
 
 
+## Sets the player's look sensitivity.
+func set_look_sensitivity(new_look_sensitivity: float) -> void:
+	_look_sensitivity = new_look_sensitivity;
+
+
+## Sets the player's fov.
+func set_fov(new_fov: float) -> void:
+	_camera.fov = new_fov;
+
+
 ## Handles emitting the step signal.
-func update_step(time: float) -> void:
+func _update_step(time: float) -> void:
 	var pos = sin(time * STEP_FREQ);
 
 	if (pos < STEP_THRESHOLD && !_just_stepped):
@@ -116,11 +134,8 @@ func update_step(time: float) -> void:
 		_just_stepped = false;
 
 
-## Sets the player's look sensitivity.
-func set_look_sensitivity(new_look_sensitivity: float) -> void:
-	_look_sensitivity = new_look_sensitivity;
-
-
-## Sets the player's fov.
-func set_fov(new_fov: float) -> void:
-	_camera.fov = new_fov;
+## Calculates the force of the players landing. 
+## Returned as a magnitude between 0 and 1.
+func _calc_land_force() -> float:
+	var land_force = abs(_previous_frame_velocity_y) / 12.0;
+	return clamp(land_force, 0, 1);
