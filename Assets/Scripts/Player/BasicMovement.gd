@@ -5,8 +5,8 @@ signal step();
 ## parameter represents the force with which the player hit the ground.
 signal land(force);
 
-var WALK_SPEED = 5.0;
-var SPRINT_SPEED = 8.0;
+var WALK_SPEED = 4.5;
+var SPRINT_SPEED = 6.0;
 var JUMP_VELOCITY = 4.5;
 var MIN_LOOK_ANGLE = -75;
 var MAX_LOOK_ANGLE = 75;

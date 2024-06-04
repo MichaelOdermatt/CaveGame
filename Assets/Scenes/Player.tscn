@@ -315,6 +315,7 @@ parameters/PlayerAttack/request = 0
 [node name="PlayerAudioPlayers" type="Node3D" parent="."]
 
 [node name="WalkingAudioPlayer" type="AudioStreamPlayer" parent="PlayerAudioPlayers"]
+volume_db = -5.0
 bus = &"Reverb Bus"
 
 [node name="PickaxeAudioPlayer" type="AudioStreamPlayer" parent="PlayerAudioPlayers"]

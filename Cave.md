@@ -491,6 +491,15 @@ Pleese son, tell me! What is the world like out there?
 "I'm stuck in here too..."
 
 
+Scientist:
+Ye hear that?
+
+Those burbling echos.
+
+We're inside of it!
+
+That coarse booming and this fetid blistering smog? It's obvious.
+
 
 Man looking at ceiling:
 LET US OUT, YOU HEAVING MASS!
@@ -503,6 +512,8 @@ EXPOSE! GUSH AND SPOUT! BURST YOUR DEPTHS!
 
 
 Man near campfire:
+You're back! Find anything?
+
 Alas the earth has swollowed us whole!
 
 May we all enjoy her aweful beauty ~~from the inside~~!
