@@ -1,33 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1p3e1v8wmvua"]
+[gd_scene load_steps=12 format=3 uid="uid://d1p3e1v8wmvua"]
 
-[ext_resource type="Texture2D" uid="uid://bkpob488p50dh" path="res://Assets/Textures/WaterRipple.png" id="1_rjscw"]
-
-[sub_resource type="Animation" id="Animation_1di3r"]
-resource_name = "ripple"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RippleTexture:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.4, 0.4, 0.4), Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RippleTexture:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.909804, 0.886275, 0.780392, 0.254902), Color(0.909804, 0.886275, 0.780392, 0)]
-}
+[ext_resource type="Script" path="res://Assets/Scripts/Effects/WaterRippleEffect.gd" id="1_1ri8m"]
+[ext_resource type="Texture2D" uid="uid://bkpob488p50dh" path="res://Assets/Textures/WaterRippleEffect/WaterRipple.png" id="2_nclts"]
+[ext_resource type="Texture2D" uid="uid://do6x6hgqha6hi" path="res://Assets/Textures/WaterRippleEffect/WaterSplash.png" id="3_m45k1"]
 
 [sub_resource type="Animation" id="Animation_20rv1"]
 length = 0.001
@@ -56,22 +31,109 @@ tracks/1/keys = {
 "values": [Color(0.909804, 0.886275, 0.780392, 0.254902)]
 }
 
+[sub_resource type="Animation" id="Animation_1di3r"]
+resource_name = "ripple"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RippleTexture:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(2, 2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RippleTexture:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.909804, 0.886275, 0.780392, 0.254902), Color(0.909804, 0.886275, 0.780392, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_animation_end"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p0hpv"]
 _data = {
 "RESET": SubResource("Animation_20rv1"),
 "ripple": SubResource("Animation_1di3r")
 }
 
+[sub_resource type="Gradient" id="Gradient_0h31h"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sq1mf"]
+gradient = SubResource("Gradient_0h31h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6jpo4"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -3, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 6.0
+angle_min = -45.0
+angle_max = 45.0
+scale_min = 0.3
+scale_max = 0.6
+color_ramp = SubResource("GradientTexture1D_sq1mf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbhwl"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.701961, 0.701961, 0.701961, 1)
+albedo_texture = ExtResource("3_m45k1")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_vf0gy"]
+material = SubResource("StandardMaterial3D_wbhwl")
+
 [node name="WaterRippleEffect" type="Node3D"]
 transform = Transform3D(0.109849, 0, 0.00575696, 0, 0.11, 0, -0.00575696, 0, 0.109849, 0, 0, 0)
+script = ExtResource("1_1ri8m")
 
 [node name="RippleTexture" type="Sprite3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 modulate = Color(0.909804, 0.886275, 0.780392, 0.254902)
 axis = 1
-texture = ExtResource("1_rjscw")
+texture = ExtResource("2_nclts")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_p0hpv")
 }
+
+[node name="SplashParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789002, 0)
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6jpo4")
+draw_pass_1 = SubResource("QuadMesh_vf0gy")
