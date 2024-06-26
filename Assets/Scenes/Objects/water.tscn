@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://n4k8m21hym5q"]
+
+[ext_resource type="Material" uid="uid://0vppnamshfj" path="res://Assets/Materials/Water.tres" id="1_6rl18"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_751tg"]
+_surfaces = [{
+"aabb": AABB(-7.4, 0.0182228, -7.4, 14.8, 1.00005e-05, 14.8),
+"format": 4097,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "Water",
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(205, 204, 236, 192, 225, 71, 149, 60, 205, 204, 236, 64, 205, 204, 236, 64, 225, 71, 149, 60, 205, 204, 236, 64, 205, 204, 236, 192, 225, 71, 149, 60, 205, 204, 236, 192, 205, 204, 236, 64, 225, 71, 149, 60, 205, 204, 236, 192)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_m7onj"]
+resource_name = "Cave_Plane"
+_surfaces = [{
+"aabb": AABB(-7.4, 0.0182228, -7.4, 14.8, 1.00005e-05, 14.8),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0),
+"format": 4119,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": ExtResource("1_6rl18"),
+"name": "Water",
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(205, 204, 236, 192, 225, 71, 149, 60, 205, 204, 236, 64, 255, 127, 255, 255, 255, 255, 255, 191, 205, 204, 236, 64, 225, 71, 149, 60, 205, 204, 236, 64, 255, 127, 255, 255, 255, 255, 255, 191, 205, 204, 236, 192, 225, 71, 149, 60, 205, 204, 236, 192, 255, 127, 255, 255, 255, 255, 255, 191, 205, 204, 236, 64, 225, 71, 149, 60, 205, 204, 236, 192, 255, 127, 255, 255, 255, 255, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_751tg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ciepo"]
+size = Vector3(14.6522, 1, 5.37282)
+
+[node name="Water" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -3, 9)
+mesh = SubResource("ArrayMesh_m7onj")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Water"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0373695, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6329, -0.376805, 0)
+shape = SubResource("BoxShape3D_ciepo")

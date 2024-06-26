@@ -1,6 +1,6 @@
 extends Control;
 
-@export var first_level_scene_path: String = 'res://Assets/Scenes/TitleScreen.tscn';
+@export var first_level_scene_path: String;
 
 @onready var _main_menu: Control = $MarginContainer/MainMenu;
 @onready var _settings_menu: Control = $MarginContainer/SettingsMenu;

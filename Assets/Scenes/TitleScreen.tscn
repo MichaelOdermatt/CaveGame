@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7765a")
-first_level_scene_path = "res://Assets/Scenes/Level1.tscn"
+first_level_scene_path = "res://Assets/Scenes/Level2.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

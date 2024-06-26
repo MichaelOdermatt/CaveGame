@@ -14,7 +14,7 @@ var has_pickaxe: bool = false;
 @onready var _animation_tree = $AnimationTree;
 @onready var _pickaxe_model = $Head/Camera3D/Pickaxe;
 @onready var _pickaxe_area3D = $Head/Camera3D/PickaxeArea;
-@onready var _floating_pickaxe_area3D = get_node('../FloatingPickaxe/Area3D');
+# @onready var _floating_pickaxe_area3D = get_node('../FloatingPickaxe/Area3D');
 @onready var _walking_audio_player = $PlayerAudioPlayers/WalkingAudioPlayer;
 @onready var _pickaxe_audio_player = $PlayerAudioPlayers/PickaxeAudioPlayer;
 @onready var _jump_and_land_audio_player = $PlayerAudioPlayers/JumpAndLandAudioPlayer;
@@ -53,7 +53,8 @@ func play_pickaxe_swing_sound():
 
 func _setup_signals():
 	_pause_menu.settings_updated.connect(self._update_player_variables_from_Globals);
-	_floating_pickaxe_area3D.body_entered.connect(self._collided_with_floating_pickaxe);
+	# Doesn't work unless there is a pickaxe in the level
+	# _floating_pickaxe_area3D.body_entered.connect(self._collided_with_floating_pickaxe);
 	_basic_movement.step.connect(_player_sounds.handle_step);
 	_basic_movement.step.connect(_player_effects.create_walk_surface_effect);
 	_basic_movement.land.connect(_player_sounds.play_land_sound);
