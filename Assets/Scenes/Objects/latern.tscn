@@ -88,5 +88,6 @@ transform = Transform3D(0.837825, 6.32775e-07, 1.24332e-07, 4.15021e-08, 0.72178
 layers = 3
 light_color = Color(1, 0.862745, 0.588235, 1)
 light_energy = 1.304
+light_volumetric_fog_energy = 0.25
 light_size = 0.41
 omni_range = 16.407

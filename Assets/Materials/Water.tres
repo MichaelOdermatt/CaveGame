@@ -3,15 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://rt682obnsluh" path="res://Assets/Textures/Normals/Stone_19-512x512-normal.png" id="1_272wy"]
 
 [resource]
-transparency = 4
-albedo_color = Color(0.160784, 0.133333, 0.0509804, 0.87451)
-metallic = 0.71
-metallic_specular = 0.2
-normal_enabled = true
-normal_scale = 0.1
+transparency = 1
+albedo_color = Color(0.0196078, 0.0117647, 0.00784314, 0.858824)
+metallic = 0.88
+metallic_specular = 0.3
+roughness = 0.28
+emission_energy_multiplier = 7.6
+normal_scale = 0.31
 normal_texture = ExtResource("1_272wy")
 clearcoat_enabled = true
-clearcoat = 0.07
-clearcoat_roughness = 1.0
+clearcoat = 0.3
+clearcoat_roughness = 0.49
 refraction_scale = 0.37
-uv1_scale = Vector3(0.475, 0.475, 0.475)
+uv1_scale = Vector3(1.405, 1.405, 1.405)
+proximity_fade_enabled = true
+proximity_fade_distance = 0.1
