@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://rt682obnsluh" path="res://Assets/Textures/Normals/Stone_19-512x512-normal.png" id="1_272wy"]
 
 [resource]
-transparency = 1
-albedo_color = Color(0.0196078, 0.0117647, 0.00784314, 0.858824)
+render_priority = -1
+albedo_color = Color(0.0196078, 0.0117647, 0.00784314, 0.85098)
 metallic = 0.88
 metallic_specular = 0.3
-roughness = 0.28
+roughness = 0.14
 emission_energy_multiplier = 7.6
 normal_scale = 0.31
 normal_texture = ExtResource("1_272wy")
