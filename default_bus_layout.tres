@@ -2,8 +2,11 @@
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_kblj5"]
 resource_name = "Reverb"
-spread = 0.76
-wet = 0.28
+predelay_feedback = 0.37
+room_size = 0.56
+damping = 0.55
+hipass = 0.27
+wet = 0.36
 
 [resource]
 bus/1/name = &"Reverb Bus"

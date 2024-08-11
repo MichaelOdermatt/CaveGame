@@ -541,3 +541,5 @@ https://freesound.org/people/Nox_Sound/sounds/490951/
 https://freesound.org/people/savataivanov/sounds/384082/
 https://freesound.org/people/Artninja/sounds/730774/
 https://freesound.org/people/florianreichelt/sounds/563012/
+https://freesound.org/people/Yoyodaman234/sounds/348830/
+https://freesound.org/people/lollosound/sounds/386996/

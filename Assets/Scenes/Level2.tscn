@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cgqv8jjcit7x7"]
+[gd_scene load_steps=77 format=3 uid="uid://cgqv8jjcit7x7"]
 
 [ext_resource type="PackedScene" uid="uid://x0bvv5xlt1xx" path="res://Assets/Scenes/Player.tscn" id="1_eu3f7"]
 [ext_resource type="PackedScene" uid="uid://bn6exbnsy5wmc" path="res://Assets/Scenes/Menus/PauseMenu/PauseMenu.tscn" id="2_o42ia"]
@@ -19,6 +19,8 @@
 [ext_resource type="ArrayMesh" uid="uid://ce3qhhiim2iyp" path="res://Assets/Models/Flower.res" id="16_1q032"]
 [ext_resource type="PackedScene" uid="uid://cncikp81ekoa7" path="res://Assets/Scenes/Objects/table.tscn" id="16_l7ts7"]
 [ext_resource type="PackedScene" uid="uid://c6ph5vty03hlt" path="res://Assets/Scenes/Objects/pickaxe.tscn" id="17_c7hrv"]
+[ext_resource type="AudioStream" uid="uid://b47m1reyk07vj" path="res://Assets/Audio/OutsideAmbiance.wav" id="20_csxqy"]
+[ext_resource type="AudioStream" uid="uid://bukaixjrb61q7" path="res://Assets/Audio/CaveAmbiance.wav" id="21_j3p4b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yjrho"]
 sky_top_color = Color(0.588235, 0.415686, 0.364706, 1)
@@ -834,3 +836,14 @@ transform = Transform3D(-0.196049, 0, 0.980594, 0.152283, 0.987868, 0.0304457, -
 
 [node name="Pickaxe" parent="." instance=ExtResource("17_c7hrv")]
 transform = Transform3D(0.989945, 0.0580934, 0.128975, 0.137565, -0.607718, -0.782148, 0.0329426, 0.792025, -0.609599, 12.508, 1.05558, -0.95788)
+
+[node name="OutsideForestSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.5011, 14.2713, 11.9964)
+stream = ExtResource("20_csxqy")
+autoplay = true
+bus = &"Reverb Bus"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_j3p4b")
+autoplay = true
+bus = &"Reverb Bus"
