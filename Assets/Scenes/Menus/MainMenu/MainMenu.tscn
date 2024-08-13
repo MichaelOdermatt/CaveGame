@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c56nip0c3imtv"]
 
-[ext_resource type="Texture2D" uid="uid://dl3ran8fuq8j5" path="res://icon.svg" id="1_5s2r5"]
+[ext_resource type="Texture2D" uid="uid://dpdew4rcwnd3c" path="res://Assets/Images/CaveTitle.png" id="1_soo7c"]
 [ext_resource type="Theme" uid="uid://cv03kaqa62u25" path="res://Assets/Themes/MenuTheme.tres" id="2_cdgar"]
 
 [node name="MainMenu" type="Control"]
@@ -27,7 +27,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("1_5s2r5")
+texture = ExtResource("1_soo7c")
 stretch_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
@@ -59,8 +59,3 @@ alignment = 0
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("1_5s2r5")
-stretch_mode = 3
