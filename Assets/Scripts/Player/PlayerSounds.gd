@@ -19,13 +19,11 @@ var _sand_footstep2 = preload("res://Assets/Audio/Footsteps/Sand/SandFootstep2.w
 var _sand_footstep5 = preload("res://Assets/Audio/Footsteps/Sand/SandFootstep3.wav");
 var _sand_footstep_sounds = [_sand_footstep1, _sand_footstep2, _sand_footstep5];
 
-var _pickaxe_audio_player: AudioStreamPlayer;
 var _walking_audio_player: AudioStreamPlayer;
 var _jump_and_land_audio_player: AudioStreamPlayer;
 var _walk_surface_detection: Area3D;
 
-func _init(pickaxe_audio_player: AudioStreamPlayer, walking_audio_player: AudioStreamPlayer, jump_and_land_audio_player: AudioStreamPlayer, walk_surface_detection: Area3D):
-	_pickaxe_audio_player = pickaxe_audio_player;
+func _init(walking_audio_player: AudioStreamPlayer, jump_and_land_audio_player: AudioStreamPlayer, walk_surface_detection: Area3D):
 	_walking_audio_player = walking_audio_player;
 	_jump_and_land_audio_player = jump_and_land_audio_player;
 	_walk_surface_detection = walk_surface_detection;
@@ -41,10 +39,6 @@ func handle_step():
 	else:
 		_play_standard_footstep_sound();
 
-
-## Plays the pickaxe swing sound.
-func play_pickaxe_swing_sound():
-	_pickaxe_audio_player.play();
 
 
 ## Plays sound for when the player lands after being airborn.
