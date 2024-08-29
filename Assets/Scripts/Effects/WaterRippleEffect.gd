@@ -9,5 +9,5 @@ func _ready():
 
 
 ## Called by at the end of the animation.
-func on_animation_end():
+func on_animation_end() -> void:
     queue_free();

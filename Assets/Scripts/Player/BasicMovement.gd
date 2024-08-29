@@ -32,10 +32,10 @@ var _step_pos: float;
 var _just_stepped: bool = false;
 
 func _init(
-	look_sensitivity: float, 
+	look_sensitivity: float,
 	gravity: float,
-	head: Node3D, 
-	camera: Camera3D, 
+	head: Node3D,
+	camera: Camera3D,
 	character: CharacterBody3D
 ):
 	_look_sensitivity = look_sensitivity;
@@ -71,11 +71,10 @@ func handle_player_movement(delta: float) -> void:
 		_character.velocity.y = JUMP_VELOCITY;
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector(
-		"movement_left", 
-		"movement_right", 
-		"movement_forward", 
+		"movement_left",
+		"movement_right",
+		"movement_forward",
 		"movement_backward"
 	);
 
@@ -107,8 +106,8 @@ func handle_player_mouse_motion(event) -> void:
 			_head.rotate_y(-event.relative.x * _look_sensitivity);
 			_camera.rotate_x(-event.relative.y * _look_sensitivity);
 			_camera.rotation.x = clamp(
-				_camera.rotation.x, 
-				deg_to_rad(MIN_LOOK_ANGLE), 
+				_camera.rotation.x,
+				deg_to_rad(MIN_LOOK_ANGLE),
 				deg_to_rad(MAX_LOOK_ANGLE)
 			);
 

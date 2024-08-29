@@ -12,15 +12,14 @@ func _init(character: CharacterBody3D, walk_surface_detection: Area3D):
 
 
 ## Creates the walk surface effect for the surface the player is currently walking on.
-func create_walk_surface_effect():
+func create_walk_surface_effect() -> void:
 	var collider = Helpers.get_collider_of_walk_surface_type(_walk_surface_detection, 'Water');
 	if (collider != null):
 		_create_water_ripple_effect(collider);
-	pass;
 
 
 ## Creates the water ripple effect.
-func _create_water_ripple_effect(water_collider: Node3D):
+func _create_water_ripple_effect(water_collider: Node3D) -> void:
 	var effect = _water_ripple_effect.instantiate();
 	_character.get_parent().add_child(effect);
 	effect.transform.origin = _character.transform.origin;

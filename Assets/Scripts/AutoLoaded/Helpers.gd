@@ -1,7 +1,7 @@
 extends Node;
 
 ## Randomly selects a sound from the array and plays it through the given audio player.
-func playRandomSoundFromArray(array_of_sounds: Array, audio_player: AudioStreamPlayer, randomize_pitch: bool):
+func playRandomSoundFromArray(array_of_sounds: Array, audio_player: AudioStreamPlayer, randomize_pitch: bool) -> void:
 	randomize();
 	var sound_to_play = array_of_sounds[randi_range(0, len(array_of_sounds) - 1)];
 	if (randomize_pitch):
@@ -11,7 +11,7 @@ func playRandomSoundFromArray(array_of_sounds: Array, audio_player: AudioStreamP
 
 
 ## Plays a string representing the material type that the player is currently on.
-func get_walk_surface_type(walk_surface_detection: Area3D):
+func get_walk_surface_type(walk_surface_detection: Area3D) -> String:
 	var colliders = walk_surface_detection.get_overlapping_bodies();
 
 	# Get a list of all the groups that the colliders are in.
@@ -28,7 +28,7 @@ func get_walk_surface_type(walk_surface_detection: Area3D):
 
 
 ## Returns the collider of the walk surface if it is part of the given surface type. Else returns null
-func get_collider_of_walk_surface_type(walk_surface_detection: Area3D, surface_type: String):
+func get_collider_of_walk_surface_type(walk_surface_detection: Area3D, surface_type: String) -> Node3D:
 	var colliders = walk_surface_detection.get_overlapping_bodies();
 
 	# Get a list of all the groups that the colliders are in.

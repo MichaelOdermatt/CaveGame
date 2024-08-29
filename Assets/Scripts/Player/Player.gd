@@ -15,10 +15,10 @@ var _player_sounds: PlayerSounds;
 func _ready():
 	var setting_values = Globals.setting_values;
 	_basic_movement = BasicMovement.new(
-		setting_values.look_sensitivity, 
-		ProjectSettings.get_setting('physics/3d/default_gravity'), 
-		_head, 
-		_camera, 
+		setting_values.look_sensitivity,
+		ProjectSettings.get_setting('physics/3d/default_gravity'),
+		_head,
+		_camera,
 		self
 	);
 	_camera_effects = CameraEffects.new(_camera);
@@ -32,21 +32,21 @@ func _ready():
 
 
 ## Shakes the player's camera.
-func shake_camera(shake_time, shake_magnitude):
+func shake_camera(shake_time, shake_magnitude) -> void:
 	_camera_effects.shake(shake_time, shake_magnitude);
 
 
-func _setup_signals():
+func _setup_signals() -> void:
 	_pause_menu.settings_updated.connect(self._update_player_variables_from_Globals);
 	_basic_movement.step.connect(_player_sounds.handle_step);
 	_basic_movement.step.connect(_player_effects.create_walk_surface_effect);
 	_basic_movement.land.connect(_player_sounds.play_land_sound);
 
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	# We want to capture the mouse if the player has clicked inside the game window.
-	if (event is InputEventMouseButton && 
-		event.button_index == MOUSE_BUTTON_LEFT && 
+	if (event is InputEventMouseButton &&
+		event.button_index == MOUSE_BUTTON_LEFT &&
 		Input.mouse_mode != Input.MOUSE_MODE_CAPTURED
 	):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
@@ -55,12 +55,12 @@ func _unhandled_input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 		_pause_menu.show_menu();
 
-	## Update player camera movement.
+	# Update player camera movement.
 	_basic_movement.handle_player_mouse_motion(event);
 
 
-func _physics_process(delta):
-	## Update player movement.
+func _physics_process(delta) -> void:
+	# Update player movement.
 	_basic_movement.handle_player_movement(delta);
 
 
@@ -68,4 +68,3 @@ func _physics_process(delta):
 func _update_player_variables_from_Globals() -> void:
 	_basic_movement.set_look_sensitivity(Globals.setting_values.look_sensitivity);
 	_basic_movement.set_fov(Globals.setting_values.fov);
-

@@ -7,8 +7,8 @@ func _init(camera: Camera3D):
 
 
 ## Shakes the camera.
-func shake(shake_time: float, shake_magnitude):
-    var initial_transform = _camera.transform 
+func shake(shake_time: float, shake_magnitude) -> void:
+    var initial_transform = _camera.transform
     var elapsed_time = 0.0
 
     while elapsed_time < shake_time:

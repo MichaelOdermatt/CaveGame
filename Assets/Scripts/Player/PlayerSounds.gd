@@ -29,7 +29,7 @@ func _init(walking_audio_player: AudioStreamPlayer, jump_and_land_audio_player: 
 	_walk_surface_detection = walk_surface_detection;
 
 
-func handle_step():
+func handle_step() -> void:
 	var walk_surface_type = Helpers.get_walk_surface_type(_walk_surface_detection);
 	
 	if (walk_surface_type == 'Water'):
@@ -40,9 +40,8 @@ func handle_step():
 		_play_standard_footstep_sound();
 
 
-
 ## Plays sound for when the player lands after being airborn.
-func play_land_sound(force: float):
+func play_land_sound(force: float) -> void:
 	_jump_and_land_audio_player.volume_db = linear_to_db(force)
 
 	var walk_surface_type = Helpers.get_walk_surface_type(_walk_surface_detection);
@@ -56,28 +55,28 @@ func play_land_sound(force: float):
 
 
 ## Plays a random standard footstep sound.
-func _play_standard_footstep_sound():
+func _play_standard_footstep_sound() -> void:
 	Helpers.playRandomSoundFromArray(_standard_footstep_sounds, _walking_audio_player, true);
 
 
 ## Plays a random water footstep sound.
-func _play_water_footstep_sound():
+func _play_water_footstep_sound() -> void:
 	Helpers.playRandomSoundFromArray(_water_footstep_sounds, _walking_audio_player, true);
 
 
 ## Plays a random sand footstep sound.
-func _play_sand_footstep_sound():
+func _play_sand_footstep_sound() -> void:
 	Helpers.playRandomSoundFromArray(_sand_footstep_sounds, _walking_audio_player, true);
 
 
 ## Plays the standard land sound.
-func _play_standard_land_sound():
+func _play_standard_land_sound() -> void:
 	_jump_and_land_audio_player.pitch_scale = randf_range(0.8, 1.2);
 	_jump_and_land_audio_player.stream = _standard_land;
 	_jump_and_land_audio_player.play();
 
 
 ## Plays the water land sound.
-func _play_water_land_sound():
+func _play_water_land_sound() -> void:
 	_jump_and_land_audio_player.stream = _water_land;
 	_jump_and_land_audio_player.play();

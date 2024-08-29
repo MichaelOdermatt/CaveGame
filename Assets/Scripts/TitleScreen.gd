@@ -32,10 +32,10 @@ func _show_main_menu() -> void:
 
 
 ## Starts the game.
-func _start_game():
+func _start_game() -> void:
     get_tree().change_scene_to_file(first_level_scene_path);
 
 
 ## Exits the game.
-func _exit_game():
+func _exit_game() -> void:
     get_tree().quit();
