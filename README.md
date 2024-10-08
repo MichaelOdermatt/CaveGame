@@ -1,4 +1,4 @@
-# Cave Game
+# Cave Prototype
 
 A brief prototype where you can explore a tiny cave.
 
